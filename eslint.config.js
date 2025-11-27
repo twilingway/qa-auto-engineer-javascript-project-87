@@ -11,14 +11,10 @@ export default defineConfig([
     extends: ['js/recommended'],
     languageOptions: { globals: globals.node },
     rules: {
-      // Переопределяем: разрешаем и требуем точки с запятой
-      // '@stylistic/semi': ['error', 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
-      // '@stylistic/arrow-parens': ['error', 'always'],
       'no-unused-vars': 'warn',
     },
   },
-  // Add this new configuration object for test files
   {
     files: ['__tests__/**/*.js'],
     languageOptions: {

@@ -3,8 +3,8 @@ const stringify = (value, level) => {
     return value
   }
 
-  const indentForKeys = '    '.repeat(level) // Отступ для ключей внутри объекта
-  const indentForBracket = '    '.repeat(level - 1) // Отступ для закрывающей скобки
+  const indentForKeys = '    '.repeat(level)
+  const indentForBracket = '    '.repeat(level - 1)
 
   const lines = Object.entries(value).map(([key, val]) => {
     return `${indentForKeys}${key}: ${stringify(val, level + 1)}`
@@ -15,12 +15,12 @@ const stringify = (value, level) => {
 
 const formatStylish = (diff) => {
   const iter = (currentValue, level) => {
-    const spaceForAddedDeleted = ' '.repeat(level * 4 - 2) // Отступ для '+', '-'
-    const spaceForUnchangedNested = ' '.repeat(level * 4) // Отступ для ' ' и 'nested' ключа
-    const indentForBracket = '    '.repeat(level - 1) // Отступ для закрывающей скобки текущего объекта
+    const spaceForAddedDeleted = ' '.repeat(level * 4 - 2)
+    const spaceForUnchangedNested = ' '.repeat(level * 4)
+    const indentForBracket = '    '.repeat(level - 1)
 
     const lines = currentValue.map((node) => {
-      const formattedValue = stringify(node.value, level + 1) // Передаем следующий уровень для stringify
+      const formattedValue = stringify(node.value, level + 1)
       const formattedValue1 = stringify(node.value1, level + 1)
       const formattedValue2 = stringify(node.value2, level + 1)
 
@@ -42,7 +42,7 @@ const formatStylish = (diff) => {
     return `{\n${lines.join('\n')}\n${indentForBracket}}`
   }
 
-  return iter(diff, 1) // Начинаем с 1 уровня
+  return iter(diff, 1)
 }
 
 export default formatStylish
