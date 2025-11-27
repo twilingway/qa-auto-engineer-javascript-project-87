@@ -1,35 +1,22 @@
 import fs from 'fs'
 import path from 'path'
-import _ from 'lodash'
+import buildDiff from './diffBuilder.js'
+import parse from './parsers.js'
+import format from './formatters/index.js'
 
-const parseFile = filepath => {
-  const fullPath = path.resolve(process.cwd(), filepath)
-  const data = fs.readFileSync(fullPath, 'utf-8')
-  return JSON.parse(data)
-}
+const getFullPath = filepath => path.resolve(process.cwd(), filepath)
+const getFormat = filepath => path.extname(filepath).slice(1)
 
-const genDiff = (filepath1, filepath2) => {
-  const data1 = parseFile(filepath1)
-  const data2 = parseFile(filepath2)
+const genDiff = (filepath1, filepath2, formatName) => {
+  const fullPath1 = getFullPath(filepath1)
+  const fullPath2 = getFullPath(filepath2)
 
-  const keys1 = Object.keys(data1)
-  const keys2 = Object.keys(data2)
-  const sortedKeys = _.sortBy(_.union(keys1, keys2))
+  const data1 = parse(fs.readFileSync(fullPath1, 'utf-8'), getFormat(fullPath1))
+  const data2 = parse(fs.readFileSync(fullPath2, 'utf-8'), getFormat(fullPath2))
 
-  const diff = sortedKeys.map(key => {
-    if (!_.has(data1, key)) {
-      return `  + ${key}: ${data2[key]}`
-    }
-    if (!_.has(data2, key)) {
-      return `  - ${key}: ${data1[key]}`
-    }
-    if (data1[key] !== data2[key]) {
-      return `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}`
-    }
-    return `    ${key}: ${data1[key]}`
-  })
+  const diff = buildDiff(data1, data2)
 
-  return `{\n${diff.join('\n')}\n}`
+  return format(diff, formatName)
 }
 
 export default genDiff
