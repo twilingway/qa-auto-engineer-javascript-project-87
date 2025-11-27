@@ -1,0 +1,11 @@
+/node_modules/,
+/dist/,
+/build/,
+/coverage/,
+/public/,
+/src/,
+/test/,
+/scripts/,
+/config/,
+/cypress/,
+/__snapshots__/
