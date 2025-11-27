@@ -49,3 +49,17 @@ $ gendiff file1.yml file2.yml
   + verbose: true
 }
 ```
+
+### Демонстрация работы `plain` формата
+
+[![asciicast](https://asciinema.org/a/Pe6QypnLEmFWssNAjCOJN1iii.svg)](https://asciinema.org/a/Pe6QypnLEmFWssNAjCOJN1iii)
+
+**Plain:**
+
+```
+$ gendiff --format plain file1.json file2.json
+Property 'follow' was removed
+Property 'proxy' was removed
+Property 'timeout' was updated. From 50 to 20
+Property 'verbose' was added with value: true
+```

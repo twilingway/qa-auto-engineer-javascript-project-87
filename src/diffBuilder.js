@@ -12,6 +12,9 @@ const buildDiff = (data1, data2) => {
     if (!_.has(data2, key)) {
       return { key, type: 'deleted', value: data1[key] }
     }
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+      return { key, type: 'nested', children: buildDiff(data1[key], data2[key]) }
+    }
     if (data1[key] !== data2[key]) {
       return {
         key,

@@ -1,10 +1,15 @@
 import formatStylish from './stylish.js'
+import formatPlain from './plain.js'
+
+const formatters = {
+  stylish: formatStylish,
+  plain: formatPlain,
+}
 
 export default (diff, formatName = 'stylish') => {
-  switch (formatName) {
-    case 'stylish':
-      return formatStylish(diff)
-    default:
-      throw new Error(`Unknown format: ${formatName}`)
+  const format = formatters[formatName]
+  if (!format) {
+    throw new Error(`Unknown format: ${formatName}`)
   }
+  return format(diff)
 }
