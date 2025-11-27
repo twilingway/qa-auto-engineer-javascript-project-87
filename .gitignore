@@ -9,3 +9,5 @@
 /config/,
 /cypress/,
 /__snapshots__/
+
+/node_modules
