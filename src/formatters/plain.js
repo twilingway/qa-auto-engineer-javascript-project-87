@@ -1,4 +1,4 @@
-const formatValue = value => {
+const formatValue = (value) => {
   if (typeof value === 'object' && value !== null) {
     return '[complex value]'
   }
@@ -8,11 +8,11 @@ const formatValue = value => {
   return String(value)
 }
 
-const formatPlain = diff => {
+const formatPlain = (diff) => {
   const iter = (currentValue, path) => {
     const lines = currentValue
       .filter(node => node.type !== 'unchanged')
-      .map(node => {
+      .map((node) => {
         const newPath = path ? `${path}.${node.key}` : node.key
         switch (node.type) {
           case 'added':

@@ -14,7 +14,7 @@ export default defineConfig([
       // Переопределяем: разрешаем и требуем точки с запятой
       // '@stylistic/semi': ['error', 'always'],
       '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
-      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      // '@stylistic/arrow-parens': ['error', 'always'],
       'no-unused-vars': 'warn',
     },
   },

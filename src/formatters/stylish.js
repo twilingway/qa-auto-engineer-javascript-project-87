@@ -13,13 +13,13 @@ const stringify = (value, level) => {
   return `{\n${lines.join('\n')}\n${indentForBracket}}`
 }
 
-const formatStylish = diff => {
+const formatStylish = (diff) => {
   const iter = (currentValue, level) => {
     const spaceForAddedDeleted = ' '.repeat(level * 4 - 2) // Отступ для '+', '-'
     const spaceForUnchangedNested = ' '.repeat(level * 4) // Отступ для ' ' и 'nested' ключа
     const indentForBracket = '    '.repeat(level - 1) // Отступ для закрывающей скобки текущего объекта
 
-    const lines = currentValue.map(node => {
+    const lines = currentValue.map((node) => {
       const formattedValue = stringify(node.value, level + 1) // Передаем следующий уровень для stringify
       const formattedValue1 = stringify(node.value1, level + 1)
       const formattedValue2 = stringify(node.value2, level + 1)

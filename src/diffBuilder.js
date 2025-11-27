@@ -5,7 +5,7 @@ const buildDiff = (data1, data2) => {
   const keys2 = Object.keys(data2)
   const sortedKeys = _.sortBy(_.union(keys1, keys2))
 
-  return sortedKeys.map(key => {
+  return sortedKeys.map((key) => {
     if (!_.has(data1, key)) {
       return { key, type: 'added', value: data2[key] }
     }
