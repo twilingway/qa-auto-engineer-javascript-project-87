@@ -71,8 +71,6 @@ Property 'verbose' was added with value: true
 
 ### Демонстрация работы `json` формата
 
-[![asciicast](https://asciinema.org/a/612091.svg)](https://asciinema.org/a/612091)
-
 **JSON:**
 
 ```
