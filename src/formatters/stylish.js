@@ -21,16 +21,16 @@ const formatStylish = (diff) => {
 
     const lines = currentValue.map((node) => {
       const formattedValue = stringify(node.value, level + 1)
-      const formattedValue1 = stringify(node.value1, level + 1)
-      const formattedValue2 = stringify(node.value2, level + 1)
+      const formattedOldValue = stringify(node.oldValue, level + 1)
+      const formattedNewValue = stringify(node.newValue, level + 1)
 
       switch (node.type) {
         case 'added':
           return `${spaceForAddedDeleted}+ ${node.key}: ${formattedValue}`
-        case 'deleted':
+        case 'removed':
           return `${spaceForAddedDeleted}- ${node.key}: ${formattedValue}`
         case 'changed':
-          return `${spaceForAddedDeleted}- ${node.key}: ${formattedValue1}\n${spaceForAddedDeleted}+ ${node.key}: ${formattedValue2}`
+          return `${spaceForAddedDeleted}- ${node.key}: ${formattedOldValue}\n${spaceForAddedDeleted}+ ${node.key}: ${formattedNewValue}`
         case 'unchanged':
           return `${spaceForUnchangedNested}${node.key}: ${formattedValue}`
         case 'nested':

@@ -10,7 +10,7 @@ const buildDiff = (data1, data2) => {
       return { key, type: 'added', value: data2[key] }
     }
     if (!_.has(data2, key)) {
-      return { key, type: 'deleted', value: data1[key] }
+      return { key, type: 'removed', value: data1[key] }
     }
     if (_.isObject(data1[key]) && _.isObject(data2[key])) {
       return { key, type: 'nested', children: buildDiff(data1[key], data2[key]) }
@@ -19,8 +19,8 @@ const buildDiff = (data1, data2) => {
       return {
         key,
         type: 'changed',
-        value1: data1[key],
-        value2: data2[key],
+        oldValue: data1[key],
+        newValue: data2[key],
       }
     }
     return { key, type: 'unchanged', value: data1[key] }

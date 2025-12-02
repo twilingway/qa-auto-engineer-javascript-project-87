@@ -1,8 +1,6 @@
 # Gendiff
 
 [![CI](https://github.com/twilingway/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/twilingway/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml)
-[![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=twilingway_qa-auto-engineer-javascript-project-87&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=twilingway_qa-auto-engineer-javascript-project-87)
-[![Test Coverage](https://sonarcloud.io/api/project_badges/measure?project=twilingway_qa-auto-engineer-javascript-project-87&metric=coverage)](https://sonarcloud.io/summary/new_code?id=twilingway_qa-auto-engineer-javascript-project-87)
 
 Gendiff is a utility for comparing configuration files.
 
@@ -20,7 +18,7 @@ gendiff <filepath1> <filepath2>
 
 ### Example
 
-[![asciicast](https://asciinema.org/a/YOUR_CAST_ID.svg)](https://asciinema.org/a/YOUR_CAST_ID)
+[![asciicast](https://asciinema.org/a/612089.svg)](https://asciinema.org/a/612089)
 
 **JSON:**
 
@@ -66,7 +64,7 @@ Property 'verbose' was added with value: true
 
 ### Демонстрация работы `json` формата
 
-[![asciicast](https://asciinema.org/a/YOUR_JSON_CAST_ID.svg)](https://asciinema.org/a/YOUR_JSON_CAST_ID)
+[![asciicast](https://asciinema.org/a/612091.svg)](https://asciinema.org/a/612091)
 
 **JSON:**
 

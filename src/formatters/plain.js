@@ -17,10 +17,10 @@ const formatPlain = (diff) => {
         switch (node.type) {
           case 'added':
             return `Property '${newPath}' was added with value: ${formatValue(node.value)}`
-          case 'deleted':
+          case 'removed':
             return `Property '${newPath}' was removed`
           case 'changed':
-            return `Property '${newPath}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`
+            return `Property '${newPath}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`
           case 'nested':
             return iter(node.children, newPath)
           default:
