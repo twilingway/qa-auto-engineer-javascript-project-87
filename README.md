@@ -56,6 +56,7 @@ $ gendiff file1.yml file2.yml
 ### Демонстрация работы `plain` формата
 
 
+
 **Plain:**
 
 ```
@@ -75,6 +76,7 @@ Property 'verbose' was added with value: true
 **JSON:**
 
 ```
-$ gendiff --format json file_deep1.json file_deep2.yml
-[{"key":"common","type":"nested","children":[{"key":"follow","type":"added","value":false},{"key":"setting1","type":"unchanged","value":"Value 1"},{"key":"setting2","type":"deleted","value":200},{"key":"setting3","type":"changed","value1":true,"value2":null},{"key":"setting4","type":"added","value":"blah blah"},{"key":"setting5","type":"added","value":{"key5":"value5"}},{"key":"setting6","type":"deleted","value":{"key":"value","doge":{"wow":""}}}]},{"key":"group1","type":"nested","children":[{"key":"baz","type":"changed","value1":"bas","value2":"bars"},{"key":"foo","type":"unchanged","value":"bar"},{"key":"nest","type":"changed","value1":{"key":"value"},"value2":"str"}]},{"key":"group2","type":"deleted","value":{"abc":12345,"deep":{"id":45}}},{"key":"group3","type":"added","value":{"deep":{"id":{"number":45}},"fee":100500}}]
+$ gendiff --format json file1.json file2.yml
+[{"key":"follow","type":"removed","value":false},{"key":"host","type":"unchanged","value":"hexlet.io"},{"key":"proxy","type":"removed","value":"123.234.53.22"},{"key":"timeout","type":"changed","oldValue":50,"newValue":20},{"key":"verbose","type":"added","value":true}]
 ```
+[![asciicast](https://asciinema.org/a/k4Lx76wZo7lekjE5qMpgQuX80.svg)](https://asciinema.org/a/k4Lx76wZo7lekjE5qMpgQuX80)
