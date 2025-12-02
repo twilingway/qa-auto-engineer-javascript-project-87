@@ -10,8 +10,10 @@ const expectedPlain = fs.readFileSync(getFixturePath('plain.txt'), 'utf-8').trim
 
 const expectedJson = fs.readFileSync(getFixturePath('json.txt'), 'utf-8').trim()
 
+const formats = ['json', 'yml']
+
 describe('genDiff', () => {
-  test.each(['json', 'yml'])('gendiff %s', (format) => {
+  test.each(formats)('gendiff %s', (format) => {
     const filepath1 = getFixturePath(`file1.${format}`)
     const filepath2 = getFixturePath(`file2.${format}`)
 

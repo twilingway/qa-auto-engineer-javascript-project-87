@@ -11,14 +11,16 @@ npm install -g @hexlet/code
 ```
 
 ## Usage
+```bash 
+gendiff -h
+```
+[![asciicast](https://asciinema.org/a/RHeHpfd4FDYL61U0J64aDn1YH.svg)](https://asciinema.org/a/RHeHpfd4FDYL61U0J64aDn1YH)
 
 ```bash
 gendiff <filepath1> <filepath2>
 ```
 
 ### Example
-
-[![asciicast](https://asciinema.org/a/612089.svg)](https://asciinema.org/a/612089)
 
 **JSON:**
 
@@ -33,6 +35,7 @@ $ gendiff file1.json file2.json
   + verbose: true
 }
 ```
+[![asciicast](https://asciinema.org/a/Rrrr7UaapYjMkWN15YEgQHfWd.svg)](https://asciinema.org/a/Rrrr7UaapYjMkWN15YEgQHfWd)
 
 **YAML:**
 
@@ -47,10 +50,11 @@ $ gendiff file1.yml file2.yml
   + verbose: true
 }
 ```
+[![asciicast](https://asciinema.org/a/mRx2ZvhzfMstD5dMn6pvGWIfP.svg)](https://asciinema.org/a/mRx2ZvhzfMstD5dMn6pvGWIfP)
+
 
 ### Демонстрация работы `plain` формата
 
-[![asciicast](https://asciinema.org/a/Pe6QypnLEmFWssNAjCOJN1iii.svg)](https://asciinema.org/a/Pe6QypnLEmFWssNAjCOJN1iii)
 
 **Plain:**
 
@@ -61,6 +65,8 @@ Property 'proxy' was removed
 Property 'timeout' was updated. From 50 to 20
 Property 'verbose' was added with value: true
 ```
+
+[![asciicast](https://asciinema.org/a/zgNOHec0OAyXuBSmoplXVaDhy.svg)](https://asciinema.org/a/zgNOHec0OAyXuBSmoplXVaDhy)
 
 ### Демонстрация работы `json` формата
 
