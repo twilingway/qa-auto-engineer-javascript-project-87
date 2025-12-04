@@ -14,35 +14,25 @@ const stringify = (value, level) => {
 }
 
 const formatStylish = (diff) => {
-  const iter = (currentValue, level) => {
-    const spaceForAddedDeleted = ' '.repeat(level * 4 - 2)
-    const spaceForUnchangedNested = ' '.repeat(level * 4)
-    const indentForBracket = '    '.repeat(level - 1)
+  const lines = diff.map((node) => {
+    const indent = '  '
+    const unchangedIndent = '    '
 
-    const lines = currentValue.map((node) => {
-      const formattedValue = stringify(node.value, level + 1)
-      const formattedOldValue = stringify(node.oldValue, level + 1)
-      const formattedNewValue = stringify(node.newValue, level + 1)
+    switch (node.type) {
+      case 'added':
+        return `${indent}+ ${node.key}: ${stringify(node.value, 2)}`
+      case 'removed':
+        return `${indent}- ${node.key}: ${stringify(node.value, 2)}`
+      case 'updated':
+        return `${indent}- ${node.name}: ${stringify(node.value1, 2)}\n${indent}+ ${node.name}: ${stringify(node.value2, 2)}`
+      case 'unchanged':
+        return `${unchangedIndent}${node.key}: ${stringify(node.value, 2)}`
+      default:
+        throw new Error(`Unknown node type: ${node.type}`)
+    }
+  })
 
-      switch (node.type) {
-        case 'added':
-          return `${spaceForAddedDeleted}+ ${node.key}: ${formattedValue}`
-        case 'removed':
-          return `${spaceForAddedDeleted}- ${node.key}: ${formattedValue}`
-        case 'changed':
-          return `${spaceForAddedDeleted}- ${node.key}: ${formattedOldValue}\n${spaceForAddedDeleted}+ ${node.key}: ${formattedNewValue}`
-        case 'unchanged':
-          return `${spaceForUnchangedNested}${node.key}: ${formattedValue}`
-        case 'nested':
-          return `${spaceForUnchangedNested}${node.key}: ${iter(node.children, level + 1)}`
-        default:
-          throw new Error(`Unknown node type: ${node.type}. Node details: ${JSON.stringify(node)}`)
-      }
-    })
-    return `{\n${lines.join('\n')}\n${indentForBracket}}`
-  }
-
-  return iter(diff, 1)
+  return `{\n${lines.join('\n')}\n}`
 }
 
 export default formatStylish

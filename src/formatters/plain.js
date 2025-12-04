@@ -13,16 +13,15 @@ const formatPlain = (diff) => {
     const lines = currentValue
       .filter(node => node.type !== 'unchanged')
       .map((node) => {
-        const newPath = path ? `${path}.${node.key}` : node.key
+        const propertyName = node.name ?? node.key
+        const newPath = path ? `${path}.${propertyName}` : propertyName
         switch (node.type) {
           case 'added':
             return `Property '${newPath}' was added with value: ${formatValue(node.value)}`
           case 'removed':
             return `Property '${newPath}' was removed`
-          case 'changed':
-            return `Property '${newPath}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`
-          case 'nested':
-            return iter(node.children, newPath)
+          case 'updated':
+            return `Property '${newPath}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`
           default:
             throw new Error(`Unknown type: ${node.type}`)
         }

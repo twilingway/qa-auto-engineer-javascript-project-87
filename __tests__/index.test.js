@@ -4,11 +4,11 @@ import genDiff from '../src/index.js'
 
 const getFixturePath = filename => path.join('fixtures', filename)
 
-const expectedStylish = fs.readFileSync(getFixturePath('stylish.txt'), 'utf-8').trim()
+const readFixture = filename => fs.readFileSync(getFixturePath(filename), 'utf-8').trim()
 
-const expectedPlain = fs.readFileSync(getFixturePath('plain.txt'), 'utf-8').trim()
-
-const expectedJson = fs.readFileSync(getFixturePath('json.txt'), 'utf-8').trim()
+const expectedStylish = readFixture('stylish.txt')
+const expectedPlain = readFixture('plain.txt')
+const expectedJson = readFixture('json.txt')
 
 const formats = ['json', 'yml']
 

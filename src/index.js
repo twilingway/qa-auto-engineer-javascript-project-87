@@ -7,12 +7,14 @@ import format from './formatters/index.js'
 const getFullPath = filepath => path.resolve(process.cwd(), filepath)
 const getFormat = filepath => path.extname(filepath).slice(1)
 
-const genDiff = (filepath1, filepath2, formatName) => {
-  const fullPath1 = getFullPath(filepath1)
-  const fullPath2 = getFullPath(filepath2)
+const readData = (filepath) => {
+  const fullPath = getFullPath(filepath)
+  return parse(fs.readFileSync(fullPath, 'utf-8'), getFormat(fullPath))
+}
 
-  const data1 = parse(fs.readFileSync(fullPath1, 'utf-8'), getFormat(fullPath1))
-  const data2 = parse(fs.readFileSync(fullPath2, 'utf-8'), getFormat(fullPath2))
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
+  const data1 = readData(filepath1)
+  const data2 = readData(filepath2)
 
   const diff = buildDiff(data1, data2)
 
